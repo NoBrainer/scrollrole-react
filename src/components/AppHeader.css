@@ -1,0 +1,58 @@
+.AppHeader {
+	background-color: #404949;
+	color: #efefef;
+	display: flex;
+	font-size: 16px;
+	padding: 0 10px;
+	width: calc(100% - 20px);
+}
+
+.AppHeader a {
+	text-decoration: none;
+}
+
+.AppHeader .logo {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 215px;
+	flex-grow: 0;
+	flex-shrink: 0;
+	justify-content: center;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.AppHeader .logo img {
+	height: 70px;
+}
+
+.AppHeader .tabs {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+}
+.AppHeader .tabs.vertical {
+	flex-direction: column;
+}
+.AppHeader .tabs.vertical .tab {
+	flex-direction: column;
+}
+
+.AppHeader .tab {
+	align-items: center;
+	display: flex;
+	margin-right: 5px;
+	padding: 20px;
+}
+
+.AppHeader .tab.active {
+	background-color: #000000;
+}
+
+.AppHeader .tab:hover {
+	background-color: #000000;
+}
+
+.AppHeader .tab:last-child {
+	margin-right: 0;
+}

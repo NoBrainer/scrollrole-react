@@ -1,0 +1,21 @@
+body {
+	background-color: #404949;
+	color: #efefef;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	margin: 0;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+a {
+	color: #efefef;
+}
+
+p {
+	font-size: 14px;
+	line-height: 18px;
+}
+
+p, h1, h2, h3, h4, h5, h6, ul, ol {
+	margin: 0;
+}

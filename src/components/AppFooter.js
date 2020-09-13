@@ -7,7 +7,7 @@ class AppFooter extends React.Component {
 	}
 
 	render() {
-		return (<div class="AppFooter"></div>);
+		return (<div className="AppFooter"/>);
 	}
 }
 
