@@ -1,9 +1,13 @@
 import React from "react";
 import {withStyles} from "@material-ui/core/styles";
-import {Typography} from "@material-ui/core";
+import {Grid, Typography} from "@material-ui/core";
 
 const styles = {
-	root: {},
+	root: {
+		backgroundColor: '#404949',
+		color: '#efefef',
+		fontSize: '16px',
+	},
 };
 
 class AppFooter extends React.Component {
@@ -14,9 +18,15 @@ class AppFooter extends React.Component {
 	render() {
 		const {classes} = this.props;
 		return (
-			<div className={classes.root}>
-				<Typography>Footer is here.</Typography>
-			</div>
+			<Grid className={classes.root}>
+				<Grid container direction="row">
+					<Grid item xs={0} sm={1} md={2}/>
+					<Grid container item xs={12} sm={10} md={8}>
+						<Typography>Footer is here.</Typography>
+					</Grid>
+					<Grid item xs={0} sm={1} md={2}/>
+				</Grid>
+			</Grid>
 		);
 	}
 }
