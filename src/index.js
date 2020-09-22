@@ -1,15 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import {CssBaseline} from '@material-ui/core'
-import 'fontsource-roboto'
-import 'index.css'
-import App from 'App'
-import * as serviceWorker from './serviceWorker'
+import {CssBaseline, MuiThemeProvider} from "@material-ui/core";
+import App from "App";
+import "fontsource-roboto";
+import React from "react";
+import ReactDOM from "react-dom";
+import theme from "theme";
+import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<CssBaseline/>
-		<App/>
+		<MuiThemeProvider theme={theme}>
+			<CssBaseline/>
+			<App/>
+		</MuiThemeProvider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );

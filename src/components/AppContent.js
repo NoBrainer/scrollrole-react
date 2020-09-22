@@ -1,5 +1,11 @@
-import React from 'react'
-import './AppContent.css'
+import React from "react";
+import {withStyles} from "@material-ui/core/styles";
+import AppFooter from "./AppFooter";
+import {Typography} from "@material-ui/core";
+
+const styles = {
+	root: {},
+};
 
 class AppContent extends React.Component {
 	constructor(props) {
@@ -7,8 +13,14 @@ class AppContent extends React.Component {
 	}
 
 	render() {
-		return (<div className="AppContent"/>);
+		const {classes} = this.props;
+		return (
+			<div className={classes.root}>
+				<Typography>Body is here.</Typography>
+				<AppFooter/>
+			</div>
+		);
 	}
 }
 
-export default AppContent
+export default withStyles(styles)(AppContent)
