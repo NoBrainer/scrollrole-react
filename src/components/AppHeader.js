@@ -11,6 +11,7 @@ const styles = {
 	},
 	logo: {
 		flexBasis: '215px',
+		flexDirection: 'column',
 		flexGrow: 0,
 		flexShrink: 0,
 		justifyContent: 'center',
@@ -22,6 +23,7 @@ const styles = {
 	},
 	tabs: {
 		display: 'flex',
+		flex: 1,
 		flexWrap: 'wrap',
 	},
 	tab: {
@@ -40,30 +42,26 @@ const styles = {
 };
 
 class AppHeader extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		const {classes} = this.props;
 		return (
 			<AppBar position="static" className={classes.root}>
 				<Toolbar disableGutters={true}>
 					<Grid container direction="row">
-						<Grid item xs={0} sm={1} md={2}/>
+						<Grid item xs={false} sm={1} md={2}/>
 						<Grid container item xs={12} sm={10} md={8}>
-							<Grid item direction="column" className={classes.logo}>
+							<Grid item className={classes.logo}>
 								<a href="/">
 									<img src={logo} alt="ScrollRole logo"/>
 								</a>
 							</Grid>
-							<Grid item direction="row" flex="1" className={classes.tabs}>
+							<Grid item container className={classes.tabs}>
 								{this.renderTab('home', 'Home')}
 								{this.renderTab('builder', 'Character Builder')}
 								{this.renderTab('rules', 'Customize Rules')}
 							</Grid>
 						</Grid>
-						<Grid item xs={0} sm={1} md={2}/>
+						<Grid item xs={false} sm={1} md={2}/>
 					</Grid>
 				</Toolbar>
 			</AppBar>

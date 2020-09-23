@@ -15,20 +15,16 @@ const styles = {
 };
 
 class AppContent extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		const {classes} = this.props;
 		return (
 			<Grid className={classes.root}>
 				<Grid container direction="row">
-					<Grid item xs={0} sm={1} md={2}/>
+					<Grid item xs={false} sm={1} md={2}/>
 					<Grid container item xs={12} sm={10} md={8}>
 						<Paper className={classes.paper}>Body is here.</Paper>
 					</Grid>
-					<Grid item xs={0} sm={1} md={2}/>
+					<Grid item xs={false} sm={1} md={2}/>
 				</Grid>
 				<AppFooter/>
 			</Grid>
