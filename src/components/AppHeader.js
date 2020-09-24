@@ -5,8 +5,6 @@ import {withStyles} from "@material-ui/core/styles";
 
 const styles = {
 	root: {
-		backgroundColor: '#404949',
-		color: '#efefef',
 		fontSize: '16px',
 	},
 	logo: {

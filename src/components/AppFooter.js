@@ -4,15 +4,10 @@ import {Grid, Link, List, ListItem, Typography} from "@material-ui/core";
 
 const styles = {
 	root: {
-		backgroundColor: '#404949',
-		color: '#efefef',
-		fontSize: '14px',
+		backgroundColor: '#404949', //TODO: use theme.primary instead
 	},
 	section: {
 		padding: '20px',
-	},
-	sectionHeader: {
-		fontSize: '16px',
 	},
 };
 
@@ -65,7 +60,7 @@ class AppFooter extends React.Component {
 		const {classes} = this.props;
 		return (
 			<Grid item className={classes.section} xs={12} sm={6} md={4} key={i}>
-				<Typography className={classes.sectionHeader}>{section.title}</Typography>
+				<Typography>{section.title}</Typography>
 				<List>
 					{section.links.map((link, i) => this.renderListItem(link, i))}
 				</List>
