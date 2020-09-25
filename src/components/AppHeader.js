@@ -3,7 +3,7 @@ import React from "react";
 import {AppBar, Grid, Link, Toolbar} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		fontSize: '16px',
 	},
@@ -13,6 +13,7 @@ const useStyles = makeStyles({
 		flexGrow: 0,
 		flexShrink: 0,
 		justifyContent: 'center',
+		margin: "auto 0",
 		paddingLeft: '10px',
 		paddingRight: '10px',
 		'img': {
@@ -23,6 +24,9 @@ const useStyles = makeStyles({
 		display: 'flex',
 		flex: 1,
 		flexWrap: 'wrap',
+		[theme.breakpoints.down('xs')]: {
+			flexDirection: 'column' //change to vertical tabs
+		},
 	},
 	tab: {
 		alignItems: 'center',
@@ -36,8 +40,11 @@ const useStyles = makeStyles({
 		'&:last-child': {
 			marginRight: 0
 		},
+		[theme.breakpoints.down('xs')]: {
+			marginRight: 0
+		}
 	},
-});
+}));
 
 function AppHeader(props) {
 	const classes = useStyles();

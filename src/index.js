@@ -1,4 +1,5 @@
-import {CssBaseline, MuiThemeProvider} from "@material-ui/core";
+import {CssBaseline} from "@material-ui/core";
+import {ThemeProvider} from "@material-ui/core/styles"
 import App from "App";
 import "fontsource-roboto";
 import React from "react";
@@ -8,10 +9,10 @@ import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<MuiThemeProvider theme={theme}>
+		<ThemeProvider theme={theme}>
 			<CssBaseline/>
 			<App/>
-		</MuiThemeProvider>
+		</ThemeProvider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );

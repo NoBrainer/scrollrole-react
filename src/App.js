@@ -3,9 +3,9 @@ import AppHeader from "components/AppHeader";
 import AppContent from "components/AppContent";
 import {makeStyles} from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
 	root: {},
-});
+}));
 
 function App(props) {
 	const classes = useStyles();

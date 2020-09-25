@@ -2,14 +2,12 @@ import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import {Grid, Link, List, ListItem, Typography} from "@material-ui/core";
 
-const useStyles = makeStyles({
-	root: {
-		backgroundColor: '#404949', //TODO: use theme.primary instead
-	},
+const useStyles = makeStyles((theme) => ({
+	root: {},
 	section: {
 		padding: '20px',
 	},
-});
+}));
 
 const sections = [
 	{

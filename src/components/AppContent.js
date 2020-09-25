@@ -3,7 +3,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import AppFooter from "./AppFooter";
 import {Grid, Paper} from "@material-ui/core";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
 	root: {
 		minHeight: '200px',
 	},
@@ -12,7 +12,7 @@ const useStyles = makeStyles({
 		margin: '20px 0',
 		padding: '20px'
 	},
-});
+}));
 
 function AppContent(props) {
 	const classes = useStyles();
