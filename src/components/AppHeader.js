@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 		padding: '20px',
 		textDecoration: 'none',
 		'&:hover, &.active': {
-			backgroundColor: '#000000',
+			backgroundColor: 'rgba(255, 255, 255, 0.1)',
 		},
 		'&:last-child': {
 			marginRight: 0
