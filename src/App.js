@@ -1,15 +1,14 @@
 import React from "react";
 import AppHeader from "components/AppHeader";
 import AppContent from "components/AppContent";
-import {withStyles} from "@material-ui/core/styles";
+import {makeStyles} from "@material-ui/core/styles";
 
-// https://material-ui.com/styles/advanced/
-const styles = {
+const useStyles = makeStyles({
 	root: {},
-};
+});
 
 function App(props) {
-	const {classes} = props;
+	const classes = useStyles();
 	return (
 		<div className={classes.root}>
 			<AppHeader/>
@@ -18,4 +17,4 @@ function App(props) {
 	);
 }
 
-export default withStyles(styles)(App)
+export default App

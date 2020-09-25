@@ -1,9 +1,9 @@
 import logo from "assets/logo.svg";
 import React from "react";
 import {AppBar, Grid, Link, Toolbar} from "@material-ui/core";
-import {withStyles} from "@material-ui/core/styles";
+import {makeStyles} from "@material-ui/core/styles";
 
-const styles = {
+const useStyles = makeStyles({
 	root: {
 		fontSize: '16px',
 	},
@@ -37,39 +37,36 @@ const styles = {
 			marginRight: 0
 		},
 	},
-};
+});
 
-class AppHeader extends React.Component {
-	render() {
-		const {classes} = this.props;
-		return (
-			<AppBar position="static" className={classes.root}>
-				<Toolbar disableGutters={true}>
-					<Grid container direction="row">
-						<Grid item xs={false} sm={1} md={2}/>
-						<Grid container item xs={12} sm={10} md={8}>
-							<Grid item className={classes.logo}>
-								<a href="/">
-									<img src={logo} alt="ScrollRole logo"/>
-								</a>
-							</Grid>
-							<Grid item container className={classes.tabs}>
-								{this.renderTab('home', 'Home')}
-								{this.renderTab('builder', 'Character Builder')}
-								{this.renderTab('rules', 'Customize Rules')}
-							</Grid>
+function AppHeader(props) {
+	const classes = useStyles();
+	return (
+		<AppBar position="static" className={classes.root}>
+			<Toolbar disableGutters={true}>
+				<Grid container direction="row">
+					<Grid item xs={false} sm={1} md={2}/>
+					<Grid container item xs={12} sm={10} md={8}>
+						<Grid item className={classes.logo}>
+							<a href="/">
+								<img src={logo} alt="ScrollRole logo"/>
+							</a>
 						</Grid>
-						<Grid item xs={false} sm={1} md={2}/>
+						<Grid item container className={classes.tabs}>
+							{renderTab(classes, 'home', 'Home')}
+							{renderTab(classes, 'builder', 'Character Builder')}
+							{renderTab(classes, 'rules', 'Customize Rules')}
+						</Grid>
 					</Grid>
-				</Toolbar>
-			</AppBar>
-		);
-	}
-
-	renderTab(id, text) {
-		const {classes} = this.props;
-		return (<Link href={"#" + id} color="inherit" underline="none" className={classes.tab}>{text}</Link>);
-	}
+					<Grid item xs={false} sm={1} md={2}/>
+				</Grid>
+			</Toolbar>
+		</AppBar>
+	);
 }
 
-export default withStyles(styles)(AppHeader)
+function renderTab(classes, id, text) {
+	return (<Link href={"#" + id} color="inherit" underline="none" className={classes.tab}>{text}</Link>);
+}
+
+export default AppHeader

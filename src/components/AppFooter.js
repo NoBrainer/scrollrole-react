@@ -1,15 +1,15 @@
 import React from "react";
-import {withStyles} from "@material-ui/core/styles";
+import {makeStyles} from "@material-ui/core/styles";
 import {Grid, Link, List, ListItem, Typography} from "@material-ui/core";
 
-const styles = {
+const useStyles = makeStyles({
 	root: {
 		backgroundColor: '#404949', //TODO: use theme.primary instead
 	},
 	section: {
 		padding: '20px',
 	},
-};
+});
 
 const sections = [
 	{
@@ -36,45 +36,42 @@ const sections = [
 	},
 ];
 
-class AppFooter extends React.Component {
-	render() {
-		const {classes} = this.props;
-		return (
-			<Grid className={classes.root}>
-				<Grid container direction="row">
-					<Grid item xs={false} sm={1} md={2}/>
-					<Grid container item xs={12} sm={10} md={8}>
-						{this.renderSections()}
-					</Grid>
-					<Grid item xs={false} sm={1} md={2}/>
+function AppFooter(props) {
+	const classes = useStyles();
+	return (
+		<Grid className={classes.root}>
+			<Grid container direction="row">
+				<Grid item xs={false} sm={1} md={2}/>
+				<Grid container item xs={12} sm={10} md={8}>
+					{renderSections(classes)}
 				</Grid>
+				<Grid item xs={false} sm={1} md={2}/>
 			</Grid>
-		);
-	}
-
-	renderSections() {
-		return sections.map((section, i) => this.renderSection(section, i))
-	}
-
-	renderSection(section, i) {
-		const {classes} = this.props;
-		return (
-			<Grid item className={classes.section} xs={12} sm={6} md={4} key={i}>
-				<Typography>{section.title}</Typography>
-				<List>
-					{section.links.map((link, i) => this.renderListItem(link, i))}
-				</List>
-			</Grid>
-		);
-	}
-
-	renderListItem(link, i) {
-		return (
-			<ListItem key={i}>
-				<Link href={link.href} target="_blank" color="inherit" underline="hover">{link.text}</Link>
-			</ListItem>
-		);
-	}
+		</Grid>
+	);
 }
 
-export default withStyles(styles)(AppFooter)
+function renderSections(classes) {
+	return sections.map((section, i) => renderSection(classes, section, i))
+}
+
+function renderSection(classes, section, i) {
+	return (
+		<Grid item className={classes.section} xs={12} sm={6} md={4} key={i}>
+			<Typography>{section.title}</Typography>
+			<List>
+				{section.links.map((link, i) => renderListItem(link, i))}
+			</List>
+		</Grid>
+	);
+}
+
+function renderListItem(link, i) {
+	return (
+		<ListItem key={i}>
+			<Link href={link.href} target="_blank" color="inherit" underline="hover">{link.text}</Link>
+		</ListItem>
+	);
+}
+
+export default AppFooter
