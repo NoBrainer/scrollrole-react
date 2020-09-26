@@ -4,13 +4,11 @@ import AppFooter from "./AppFooter";
 import {Grid, Paper} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-	root: {
-		minHeight: '200px',
-	},
+	root: {},
 	paper: {
 		flex: 1,
 		margin: '20px 0',
-		padding: '20px'
+		padding: '20px',
 	},
 }));
 

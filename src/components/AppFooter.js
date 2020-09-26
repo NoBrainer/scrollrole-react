@@ -5,7 +5,7 @@ import {Grid, Link, List, ListItem, Typography} from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
 	root: {},
 	section: {
-		padding: '20px',
+		padding: '0 20px',
 	},
 }));
 

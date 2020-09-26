@@ -14,35 +14,21 @@ const useStyles = makeStyles((theme) => ({
 		flexShrink: 0,
 		justifyContent: 'center',
 		margin: "auto 0",
-		paddingLeft: '10px',
-		paddingRight: '10px',
+		padding: '0 10px',
 		'img': {
 			height: '70px',
 		},
 	},
 	tabs: {
-		display: 'flex',
 		flex: 1,
-		flexWrap: 'wrap',
-		[theme.breakpoints.down('xs')]: {
-			flexDirection: 'column' //change to vertical tabs
-		},
 	},
 	tab: {
 		alignItems: 'center',
 		display: 'flex',
-		marginRight: '5px',
 		padding: '20px',
-		textDecoration: 'none',
 		'&:hover, &.active': {
 			backgroundColor: 'rgba(255, 255, 255, 0.1)',
 		},
-		'&:last-child': {
-			marginRight: 0
-		},
-		[theme.breakpoints.down('xs')]: {
-			marginRight: 0
-		}
 	},
 }));
 
@@ -60,9 +46,8 @@ function AppHeader(props) {
 							</a>
 						</Grid>
 						<Grid item container className={classes.tabs}>
-							{renderTab(classes, 'home', 'Home')}
-							{renderTab(classes, 'builder', 'Character Builder')}
-							{renderTab(classes, 'rules', 'Customize Rules')}
+							{renderTab(classes, 'characters', 'Characters')}
+							{renderTab(classes, 'rules', 'Rules')}
 						</Grid>
 					</Grid>
 					<Grid item xs={false} sm={1} md={2}/>
