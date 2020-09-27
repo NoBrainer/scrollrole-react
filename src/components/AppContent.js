@@ -15,12 +15,17 @@ const useStyles = makeStyles((theme) => ({
 
 function AppContent(props) {
 	const classes = useStyles();
+
+	const renderContent = () => {
+		return (<Paper className={classes.paper}>Body text for {props.pageId}.</Paper>);
+	};
+
 	return (
 		<Grid className={classes.root}>
 			<Grid container direction="row">
 				<Grid item xs={false} sm={1} md={2}/>
 				<Grid container item xs={12} sm={10} md={8}>
-					<Paper className={classes.paper}>Body text for {props.pageId}.</Paper>
+					{renderContent()}
 				</Grid>
 				<Grid item xs={false} sm={1} md={2}/>
 			</Grid>

@@ -34,7 +34,11 @@ function NavMenu(props) {
 		return _.map(PAGE_LABELS, (name, navId) => renderMenuItem(navId, name));
 	};
 	const renderMenuItem = (navId, name) => {
-		return (<MenuItem onClick={() => pickItem(navId)} key={navId}>{name}</MenuItem>);
+		return (
+			<MenuItem key={navId} selected={props.navId === navId} onClick={() => pickItem(navId)}>
+				{name}
+			</MenuItem>
+		);
 	};
 
 	useEffect(() => {
