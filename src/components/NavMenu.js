@@ -3,6 +3,8 @@ import {Button, Menu, MenuItem, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {ArrowDropDown} from "@material-ui/icons";
 import PropTypes from "prop-types";
+import {PAGE_LABELS} from "utils/Constants";
+import _ from "lodash";
 
 const useStyles = makeStyles((theme) => ({
 	root: {},
@@ -12,16 +14,10 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const labels = {
-	'home': 'Home',
-	'characters': 'Characters',
-	'rules': 'Rules'
-};
-
 function NavMenu(props) {
 	const classes = useStyles();
 	const [anchorEl, setAnchorEl] = useState(null);
-	const [navLabel, setNavLabel] = useState(labels[props.navId]);
+	const [navLabel, setNavLabel] = useState(PAGE_LABELS[props.navId]);
 
 	const handleClose = (e) => {
 		setAnchorEl(null);
@@ -30,15 +26,17 @@ function NavMenu(props) {
 		setAnchorEl(e.currentTarget);
 	};
 	const pickItem = (navId) => {
-		props.onPick(navId);
-		setNavLabel(labels[navId]);
+		props.onChangeNavId(navId);
+		setNavLabel(PAGE_LABELS[navId]);
 		handleClose();
 	};
+	const renderMenuItems = () => {
+		return _.map(PAGE_LABELS, (name, navId) => renderMenuItem(navId, name));
+	};
 	const renderMenuItem = (navId, name) => {
-		return (<MenuItem onClick={() => pickItem(navId)}>{name}</MenuItem>);
+		return (<MenuItem onClick={() => pickItem(navId)} key={navId}>{name}</MenuItem>);
 	};
 
-	// If navLabel changes, update document.title
 	useEffect(() => {
 		document.title = `ScrollRole - ${navLabel}`;
 	}, [navLabel]);
@@ -50,9 +48,7 @@ function NavMenu(props) {
 				<ArrowDropDown/>
 			</Button>
 			<Menu id="nav-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
-				{renderMenuItem('home', 'Home', pickItem)}
-				{renderMenuItem('characters', 'Characters', pickItem)}
-				{renderMenuItem('rules', 'Rules', pickItem)}
+				{renderMenuItems()}
 			</Menu>
 		</div>
 	);
@@ -60,7 +56,7 @@ function NavMenu(props) {
 
 NavMenu.propTypes = {
 	navId: PropTypes.string.isRequired,
-	onPick: PropTypes.func.isRequired,
+	onChangeNavId: PropTypes.func.isRequired,
 };
 
 export default NavMenu

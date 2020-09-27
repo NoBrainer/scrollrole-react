@@ -1,13 +1,12 @@
 import logo from "assets/logo.svg";
-import React, {useState} from "react";
+import React from "react";
 import {AppBar, Grid, Toolbar} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import NavMenu from "components/NavMenu";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
-	root: {
-		fontSize: '16px',
-	},
+	root: {},
 	wrapper: {
 		flexWrap: 'nowrap',
 	},
@@ -38,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
 
 function AppHeader(props) {
 	const classes = useStyles();
-	const [navId, setNavId] = useState('home');
 	return (
 		<AppBar position="static" className={classes.root}>
 			<Toolbar disableGutters={true}>
@@ -51,7 +49,7 @@ function AppHeader(props) {
 							</a>
 						</Grid>
 						<Grid item container className={classes.tabs}>
-							<NavMenu navId={navId} onPick={setNavId}/>
+							<NavMenu navId={props.pageId} onChangeNavId={props.onChangePageId}/>
 						</Grid>
 					</Grid>
 					<Grid item xs={false} sm={1} md={2}/>
@@ -60,5 +58,10 @@ function AppHeader(props) {
 		</AppBar>
 	);
 }
+
+AppHeader.propTypes = {
+	pageId: PropTypes.string.isRequired,
+	onChangePageId: PropTypes.func.isRequired,
+};
 
 export default AppHeader

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import AppHeader from "components/AppHeader";
 import AppContent from "components/AppContent";
 import {makeStyles} from "@material-ui/core/styles";
@@ -9,10 +9,11 @@ const useStyles = makeStyles((theme) => ({
 
 function App(props) {
 	const classes = useStyles();
+	const [pageId, setPageId] = useState('home');
 	return (
 		<div className={classes.root}>
-			<AppHeader/>
-			<AppContent/>
+			<AppHeader pageId={pageId} onChangePageId={setPageId}/>
+			<AppContent pageId={pageId}/>
 		</div>
 	);
 }
