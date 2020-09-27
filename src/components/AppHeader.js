@@ -1,11 +1,15 @@
 import logo from "assets/logo.svg";
-import React from "react";
-import {AppBar, Grid, Link, Toolbar} from "@material-ui/core";
+import React, {useState} from "react";
+import {AppBar, Grid, Toolbar} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
+import NavMenu from "components/NavMenu";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		fontSize: '16px',
+	},
+	wrapper: {
+		flexWrap: 'nowrap',
 	},
 	logo: {
 		flexBasis: '215px',
@@ -13,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 		flexGrow: 0,
 		flexShrink: 0,
 		justifyContent: 'center',
-		margin: "auto 0",
+		margin: 'auto 0',
 		padding: '0 10px',
 		'img': {
 			height: '70px',
@@ -34,20 +38,20 @@ const useStyles = makeStyles((theme) => ({
 
 function AppHeader(props) {
 	const classes = useStyles();
+	const [navId, setNavId] = useState('home');
 	return (
 		<AppBar position="static" className={classes.root}>
 			<Toolbar disableGutters={true}>
 				<Grid container direction="row">
 					<Grid item xs={false} sm={1} md={2}/>
-					<Grid container item xs={12} sm={10} md={8}>
+					<Grid container item xs={12} sm={10} md={8} className={classes.wrapper}>
 						<Grid item className={classes.logo}>
 							<a href="/">
 								<img src={logo} alt="ScrollRole logo"/>
 							</a>
 						</Grid>
 						<Grid item container className={classes.tabs}>
-							{renderTab(classes, 'characters', 'Characters')}
-							{renderTab(classes, 'rules', 'Rules')}
+							<NavMenu navId={navId} onPick={setNavId}/>
 						</Grid>
 					</Grid>
 					<Grid item xs={false} sm={1} md={2}/>
@@ -55,10 +59,6 @@ function AppHeader(props) {
 			</Toolbar>
 		</AppBar>
 	);
-}
-
-function renderTab(classes, id, text) {
-	return (<Link href={"#" + id} color="inherit" underline="none" className={classes.tab}>{text}</Link>);
 }
 
 export default AppHeader
