@@ -1,7 +1,7 @@
-import React, {useState} from "react";
-import {makeStyles} from "@material-ui/core/styles";
 import {Grid, Link, List, ListItem, Typography} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core/styles";
 import PropTypes from "prop-types";
+import React, {useState} from "react";
 import {FOOTER_SECTIONS} from "utils/Constants";
 
 const useStyles = makeStyles((theme) => ({

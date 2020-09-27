@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from "react";
 import {Button, Menu, MenuItem, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {ArrowDropDown} from "@material-ui/icons";
-import PropTypes from "prop-types";
-import {PAGE_LABELS} from "utils/Constants";
 import _ from "lodash";
+import PropTypes from "prop-types";
+import React, {useEffect, useState} from "react";
+import {useHistory} from "react-router-dom";
+import {PAGE_LABELS} from "utils/Constants";
 
 const useStyles = makeStyles((theme) => ({
 	root: {},
@@ -16,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
 
 function NavMenu(props) {
 	const classes = useStyles();
+	const history = useHistory();
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [navLabel, setNavLabel] = useState(PAGE_LABELS[props.navId]);
 
@@ -26,9 +28,9 @@ function NavMenu(props) {
 		setAnchorEl(e.currentTarget);
 	};
 	const pickItem = (navId) => {
-		props.onChangeNavId(navId);
 		setNavLabel(PAGE_LABELS[navId]);
 		handleClose();
+		history.push(navId === 'home' ? '/' : `/${navId}`);
 	};
 	const renderMenuItems = () => {
 		return _.map(PAGE_LABELS, (name, navId) => renderMenuItem(navId, name));
@@ -60,7 +62,6 @@ function NavMenu(props) {
 
 NavMenu.propTypes = {
 	navId: PropTypes.string.isRequired,
-	onChangeNavId: PropTypes.func.isRequired,
 };
 
 export default NavMenu

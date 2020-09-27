@@ -1,9 +1,9 @@
-import logo from "assets/logo.svg";
-import React from "react";
 import {AppBar, Grid, Toolbar} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
+import logo from "assets/logo.svg";
 import NavMenu from "components/NavMenu";
 import PropTypes from "prop-types";
+import React from "react";
 
 const useStyles = makeStyles((theme) => ({
 	root: {},
@@ -49,7 +49,7 @@ function AppHeader(props) {
 							</a>
 						</Grid>
 						<Grid item container className={classes.tabs}>
-							<NavMenu navId={props.pageId} onChangeNavId={props.onChangePageId}/>
+							<NavMenu navId={props.pageId}/>
 						</Grid>
 					</Grid>
 					<Grid item xs={false} sm={1} md={2}/>
@@ -61,7 +61,6 @@ function AppHeader(props) {
 
 AppHeader.propTypes = {
 	pageId: PropTypes.string.isRequired,
-	onChangePageId: PropTypes.func.isRequired,
 };
 
 export default AppHeader

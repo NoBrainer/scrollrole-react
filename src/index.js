@@ -4,14 +4,17 @@ import App from "App";
 import "fontsource-roboto";
 import React from "react";
 import ReactDOM from "react-dom";
+import {BrowserRouter} from "react-router-dom";
+import * as serviceWorker from "serviceWorker";
 import theme from "theme";
-import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
 	<React.StrictMode>
 		<ThemeProvider theme={theme}>
 			<CssBaseline/>
-			<App/>
+			<BrowserRouter>
+				<App/>
+			</BrowserRouter>
 		</ThemeProvider>
 	</React.StrictMode>,
 	document.getElementById('root')
