@@ -4,6 +4,7 @@ import logo from "assets/logo.svg";
 import NavMenu from "components/NavMenu";
 import PropTypes from "prop-types";
 import React from "react";
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
 	root: {},
@@ -44,9 +45,9 @@ function AppHeader(props) {
 					<Grid item xs={false} sm={1} md={2}/>
 					<Grid container item xs={12} sm={10} md={8} className={classes.wrapper}>
 						<Grid item className={classes.logo}>
-							<a href="/">
+							<Link to="/">
 								<img src={logo} alt="ScrollRole logo"/>
-							</a>
+							</Link>
 						</Grid>
 						<Grid item container className={classes.tabs}>
 							<NavMenu navId={props.pageId}/>

@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 export const FOOTER_SECTIONS = [
 	{
 		title: "Credit to Others",
@@ -28,3 +30,4 @@ export const PAGE_LABELS = {
 	'characters': 'Characters',
 	'rules': 'Rules',
 };
+export const PAGE_IDS = _.keys(PAGE_LABELS);

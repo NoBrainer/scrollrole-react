@@ -1,11 +1,10 @@
 import {Button, Menu, MenuItem, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {ArrowDropDown} from "@material-ui/icons";
-import _ from "lodash";
+import {PAGE_IDS, PAGE_LABELS} from "common/Constants";
 import PropTypes from "prop-types";
 import React, {useEffect, useState} from "react";
 import {useHistory} from "react-router-dom";
-import {PAGE_LABELS} from "utils/Constants";
 
 const useStyles = makeStyles((theme) => ({
 	root: {},
@@ -33,7 +32,7 @@ function NavMenu(props) {
 		history.push(navId === 'home' ? '/' : `/${navId}`);
 	};
 	const renderMenuItems = () => {
-		return _.map(PAGE_LABELS, (name, navId) => renderMenuItem(navId, name));
+		return PAGE_IDS.map((navId) => renderMenuItem(navId, PAGE_LABELS[navId]));
 	};
 	const renderMenuItem = (navId, name) => {
 		return (
@@ -46,6 +45,9 @@ function NavMenu(props) {
 	useEffect(() => {
 		document.title = `ScrollRole - ${navLabel}`;
 	}, [navLabel]);
+	useEffect(() => {
+		setNavLabel(PAGE_LABELS[props.navId]);
+	}, [props.navId]);
 
 	return (
 		<div className={classes.root}>
