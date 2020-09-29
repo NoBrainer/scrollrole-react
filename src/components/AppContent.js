@@ -1,27 +1,24 @@
-import {Grid, Paper} from "@material-ui/core";
-import {makeStyles} from "@material-ui/core/styles";
+import {Grid} from "@material-ui/core";
+import AppFooter from "components/AppFooter";
+import CharactersContent from "components/pages/CharactersContent";
+import HomeContent from "components/pages/HomeContent";
+import RulesContent from "components/pages/RulesContent";
 import PropTypes from "prop-types";
 import React from "react";
-import AppFooter from "./AppFooter";
-
-const useStyles = makeStyles((theme) => ({
-	root: {},
-	paper: {
-		flex: 1,
-		margin: '20px 0',
-		padding: '20px',
-	},
-}));
 
 function AppContent(props) {
-	const classes = useStyles();
-
 	const renderContent = () => {
-		return (<Paper className={classes.paper}>Body text for {props.pageId}.</Paper>);
+		if (props.pageId === 'characters') {
+			return (<CharactersContent/>);
+		} else if (props.pageId === 'rules') {
+			return (<RulesContent/>);
+		} else {
+			return (<HomeContent/>);
+		}
 	};
 
 	return (
-		<Grid className={classes.root}>
+		<Grid>
 			<Grid container direction="row">
 				<Grid item xs={false} sm={1} md={2}/>
 				<Grid container item xs={12} sm={10} md={8}>

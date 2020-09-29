@@ -1,11 +1,11 @@
-import {Grid, Link, List, ListItem, Typography} from "@material-ui/core";
+import {Grid, Link as ExternalLink, List, ListItem, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
-import {FOOTER_SECTIONS} from "common/Constants";
+import {FOOTER_SECTIONS} from "common/Content";
+import {EXTERNAL_LINK_PROPS} from "common/Defaults";
 import PropTypes from "prop-types";
 import React, {useState} from "react";
 
 const useStyles = makeStyles((theme) => ({
-	root: {},
 	section: {
 		padding: '0 20px',
 	},
@@ -32,15 +32,15 @@ function AppFooter(props) {
 	const renderListItem = (link, i) => {
 		return (
 			<ListItem key={i}>
-				<Link href={link.href} target="_blank" color="inherit" underline="hover">
+				<ExternalLink {...EXTERNAL_LINK_PROPS} href={link.href} underline="hover">
 					{link.text}
-				</Link>
+				</ExternalLink>
 			</ListItem>
 		);
 	};
 
 	return (
-		<Grid className={classes.root}>
+		<Grid>
 			<Grid container direction="row">
 				<Grid item xs={false} sm={1} md={2}/>
 				<Grid container item xs={12} sm={10} md={8}>

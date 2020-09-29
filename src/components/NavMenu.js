@@ -7,7 +7,6 @@ import React, {useEffect, useState} from "react";
 import {useHistory} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
-	root: {},
 	button: {
 		height: '70px',
 		textTransform: 'none',
@@ -50,7 +49,7 @@ function NavMenu(props) {
 	}, [props.navId]);
 
 	return (
-		<div className={classes.root}>
+		<div>
 			<Button aria-controls="nav-menu" aria-haspopup="true" onClick={handleOpen} className={classes.button}>
 				<Typography>{navLabel}</Typography>
 				<ArrowDropDown/>

@@ -7,7 +7,6 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
-	root: {},
 	wrapper: {
 		flexWrap: 'nowrap',
 	},
@@ -39,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 function AppHeader(props) {
 	const classes = useStyles();
 	return (
-		<AppBar position="static" className={classes.root}>
+		<AppBar position="static">
 			<Toolbar disableGutters={true}>
 				<Grid container direction="row">
 					<Grid item xs={false} sm={1} md={2}/>
