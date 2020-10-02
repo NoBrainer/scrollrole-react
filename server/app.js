@@ -13,6 +13,9 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 
+//TODO: consider serving app with Express?
+app.use(express.static(path.join(__dirname, '..', 'build')));
+
 // API routes
 app.use('/api', require('./api/index'));
 
