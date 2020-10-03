@@ -1,0 +1,8 @@
+{
+  "ext": "js",
+  "watch": [
+    "bin/www",
+    "app.js",
+    "api/**"
+  ]
+}
