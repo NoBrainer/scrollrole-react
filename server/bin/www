@@ -4,8 +4,11 @@ const app = require('../app');
 const debug = require('debug')('express:server');
 const http = require('http');
 
-// Get port from environment and store in Express
-const port = normalizePort(process.env.PORT || '3001');
+// Normalize process.env.* values
+normalizeEnvironmentVariables();
+
+// Get port from environment and store in Express app
+const port = process.env.PORT;
 app.set('port', port);
 
 // Create HTTP server
@@ -16,7 +19,22 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-// Normalize a port into a number, string, or false
+// Normalize environment variables and fallback to defaults
+function normalizeEnvironmentVariables() {
+	process.env.NODE_ENV = normalizeNodeEnv(process.env.NODE_ENV) || 'dev';
+	process.env.PORT = normalizePort(process.env.PORT) || 3001;
+}
+
+// Normalize NODE_ENV into 'dev', 'prod', or false
+function normalizeNodeEnv(val) {
+	if (typeof val !== 'string') return false;
+	const value = val.toLowerCase();
+	if (value.startsWith('prod')) return 'prod';
+	if (value.startsWith('dev')) return 'dev';
+	return false;
+}
+
+// Normalize port into a number, string, or false
 function normalizePort(val) {
 	const port = parseInt(val, 10);
 	if (isNaN(port)) {
