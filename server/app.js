@@ -1,8 +1,9 @@
+const compression = require('compression');
+const cookieParser = require('cookie-parser');
 const createError = require('http-errors');
 const express = require('express');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
 const favicon = require('serve-favicon');
+const logger = require('morgan');
 const path = require('path');
 
 // Configure the Express app
@@ -12,9 +13,10 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
+app.use(compression());
 
 // On production, host the front-end build
-if (process.env.NODE_ENV !== 'dev') {
+if (process.env.NODE_ENV !== 'development') {
 	app.use(express.static(path.join(__dirname, '..', 'build')));
 }
 
@@ -30,7 +32,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
 	// set locals, only providing error in development
 	res.locals.message = err.message;
-	res.locals.error = process.env.NODE_ENV === 'dev' ? err : {};
+	res.locals.error = process.env.NODE_ENV === 'development' ? err : {};
 
 	// render the error page
 	res.status(err.status || 500);

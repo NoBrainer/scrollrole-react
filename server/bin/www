@@ -21,16 +21,16 @@ server.on('listening', onListening);
 
 // Normalize environment variables and fallback to defaults
 function normalizeEnvironmentVariables() {
-	process.env.NODE_ENV = normalizeNodeEnv(process.env.NODE_ENV) || 'dev';
+	process.env.NODE_ENV = normalizeNodeEnv(process.env.NODE_ENV) || 'development';
 	process.env.PORT = normalizePort(process.env.PORT) || 3001;
 }
 
-// Normalize NODE_ENV into 'dev', 'prod', or false
+// Normalize NODE_ENV into 'development', 'production', or false
 function normalizeNodeEnv(val) {
 	if (typeof val !== 'string') return false;
 	const value = val.toLowerCase();
-	if (value.startsWith('prod')) return 'prod';
-	if (value.startsWith('dev')) return 'dev';
+	if (value.startsWith('prod')) return 'production';
+	if (value.startsWith('dev')) return 'development';
 	return false;
 }
 
@@ -67,7 +67,7 @@ function onError(error) {
 function onListening() {
 	const addr = server.address();
 	const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
-	if (process.env.NODE_ENV === 'dev') {
+	if (process.env.NODE_ENV === 'development') {
 		console.log('Listening on ' + bind);
 	} else {
 		debug('Listening on ' + bind);
