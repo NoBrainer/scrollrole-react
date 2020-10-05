@@ -3,13 +3,13 @@ const cookieParser = require('cookie-parser');
 const createError = require('http-errors');
 const express = require('express');
 const favicon = require('serve-favicon');
-const logger = require('morgan');
 const path = require('path');
+const {httpLogger} = require('./common/logger');
 
 // Configure the Express app
 const app = express();
 app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.png')));
-app.use(logger('dev'));
+app.use(httpLogger);
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
