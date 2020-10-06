@@ -22,6 +22,7 @@ if (process.env.NODE_ENV !== 'development') {
 
 // API routes
 app.use('/api', require('./api/index'));
+app.use('/api/yaml', require('./api/yaml'));
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
