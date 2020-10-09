@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-function NavMenu(props) {
+function HeaderNav(props) {
 	const classes = useStyles();
 	const history = useHistory();
 	const [anchorEl, setAnchorEl] = useState(null);
@@ -61,8 +61,8 @@ function NavMenu(props) {
 	);
 }
 
-NavMenu.propTypes = {
+HeaderNav.propTypes = {
 	navId: PropTypes.string.isRequired,
 };
 
-export default NavMenu
+export default HeaderNav

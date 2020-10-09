@@ -1,7 +1,7 @@
 import {AppBar, Grid, Toolbar} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import logo from "assets/logo.svg";
-import NavMenu from "components/NavMenu";
+import HeaderNav from "components/HeaderNav";
 import PropTypes from "prop-types";
 import React from "react";
 import {Link} from "react-router-dom";
@@ -49,7 +49,7 @@ function AppHeader(props) {
 							</Link>
 						</Grid>
 						<Grid item container className={classes.tabs}>
-							<NavMenu navId={props.pageId}/>
+							<HeaderNav navId={props.pageId}/>
 						</Grid>
 					</Grid>
 					<Grid item xs={false} sm={1} md={2}/>
