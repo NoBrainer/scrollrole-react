@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-/* GET home page. */
+/* Redirect to the ScrollRole wiki. */
 router.get('/', function(req, res, next) {
-	res.send("Index here!");
+	res.redirect("https://github.com/NoBrainer/scrollrole-react/wiki");
 });
 
 module.exports = router
